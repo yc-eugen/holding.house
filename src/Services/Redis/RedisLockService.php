@@ -6,10 +6,10 @@ namespace App\Services\Redis;
 
 use Symfony\Contracts\Cache\CacheInterface;
 
-readonly class RedisLockService
+class RedisLockService
 {
     public function __construct(
-        private CacheInterface $cache
+        private readonly CacheInterface $cache
     ) {
     }
 
