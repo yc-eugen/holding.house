@@ -1,0 +1,21 @@
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./.environment/local/nginx/server.conf:/etc/nginx/conf.d/default.conf
+      - ./:/app/
+
+  php:
+    build: ./.environment/local/php
+    environment:
+      PHP_IDE_CONFIG: "serverName=test.hg.dev"
+    volumes:
+      - ./:/app
+
+  redisdb:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
