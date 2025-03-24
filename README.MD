@@ -46,9 +46,9 @@ class DataController
         $this->cacheService = $cacheService;
     }
 
-    public function fetchData(): JsonResponse
+    public function fetchData(array $data): JsonResponse
     {
-        return $this->cacheService->getData();
+        return new JsonResponse($this->cacheService->handle(array $data));
     }
 }
 ```
